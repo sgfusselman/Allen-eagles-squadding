@@ -89,12 +89,15 @@ gap: 8px;
 display: flex;
 align-items: center;
 gap: 8px;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-scrollbar-width: none;
+flex-wrap: wrap;
 padding-bottom: 2px;
 }
-.filter-row::-webkit-scrollbar { display: none; }
+.disc-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6px;
+flex: 1;
+}
 
 .filter-label {
 font-size: 10px;
@@ -264,10 +267,12 @@ transition: box-shadow .15s;
   </div>
   <div class="filter-row">
     <span class="filter-label">Discipline</span>
-    <button class="pill trap-pill active"  onclick="filterDisc(this,'Trap')">Trap</button>
-    <button class="pill sport-pill active" onclick="filterDisc(this,'Sporting')">Sporting Clays</button>
-    <button class="pill super-pill active" onclick="filterDisc(this,'Super')">Super Sporting</button>
-    <button class="pill skeet-pill active" onclick="filterDisc(this,'Skeet')">Skeet</button>
+    <div class="disc-grid">
+      <button class="pill trap-pill active"  onclick="filterDisc(this,'Trap')">Trap</button>
+      <button class="pill sport-pill active" onclick="filterDisc(this,'Sporting')">Sporting Clays</button>
+      <button class="pill super-pill active" onclick="filterDisc(this,'Super')">Super Sporting</button>
+      <button class="pill skeet-pill active" onclick="filterDisc(this,'Skeet')">Skeet</button>
+    </div>
   </div>
   <div class="search-row">
     <span class="search-icon">🔍</span>
