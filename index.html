@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Allen Eagles · SCTP DFW Championship Schedule</title>
+<title>Allen Eagles · SCTP Schedule</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -14,7 +14,6 @@
     --border: #252a38;
     --accent: #e8a020;
     --accent2: #3b8beb;
-    --accent3: #2ec97e;
     --text: #e8eaf0;
     --muted: #6b7280;
     --trap: #e8a020;
@@ -24,66 +23,87 @@
   }
 
 - { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(–bg); color: var(–text); font-family: ‘DM Sans’, sans-serif; min-height: 100vh; }
 
-body {
-background: var(–bg);
-color: var(–text);
-font-family: ‘DM Sans’, sans-serif;
-min-height: 100vh;
-}
-
+/* ── HEADER ── */
 header {
 background: var(–surface);
 border-bottom: 1px solid var(–border);
-padding: 20px 28px;
-display: flex;
-align-items: center;
-gap: 16px;
+padding: 12px 16px;
 position: sticky;
 top: 0;
 z-index: 100;
 }
 
-.logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; letter-spacing: 2px; color: var(–accent); line-height: 1; }
+.header-row1 {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+}
+
+.logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 26px; letter-spacing: 2px; color: var(–accent); line-height: 1; }
 .logo span { color: var(–text); }
-.header-meta { font-size: 12px; color: var(–muted); border-left: 1px solid var(–border); padding-left: 16px; line-height: 1.6; }
+.logo-sub { font-size: 9px; color: var(–muted); letter-spacing: 1px; margin-top: 1px; }
+
+.header-meta { font-size: 11px; color: var(–muted); line-height: 1.5; text-align: center; flex: 1; }
 
 .tabs {
 display: flex;
-gap: 4px;
-margin-left: auto;
+gap: 3px;
 background: var(–bg);
 border-radius: 8px;
-padding: 4px;
+padding: 3px;
+flex-shrink: 0;
 }
 .tab {
-padding: 6px 14px;
-border-radius: 6px;
+padding: 5px 10px;
+border-radius: 5px;
 border: none;
 background: transparent;
 color: var(–muted);
 font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
+font-size: 12px;
 font-weight: 500;
 cursor: pointer;
 transition: all .15s;
+white-space: nowrap;
 }
 .tab.active { background: var(–card); color: var(–text); }
-.tab:hover:not(.active) { color: var(–text); }
 
-main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
-
+/* ── FILTERS ── */
 .filters {
+padding: 10px 16px;
+background: var(–surface);
+border-bottom: 1px solid var(–border);
 display: flex;
-gap: 10px;
-flex-wrap: wrap;
-margin-bottom: 24px;
-align-items: center;
+flex-direction: column;
+gap: 8px;
 }
-.filter-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(–muted); margin-right: 4px; }
+
+.filter-row {
+display: flex;
+align-items: center;
+gap: 8px;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none;
+padding-bottom: 2px;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+
+.filter-label {
+font-size: 10px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(–muted);
+flex-shrink: 0;
+width: 70px;
+}
 
 .pill {
-padding: 5px 14px;
+padding: 4px 12px;
 border-radius: 20px;
 border: 1px solid var(–border);
 background: var(–surface);
@@ -93,95 +113,113 @@ font-weight: 500;
 cursor: pointer;
 transition: all .15s;
 white-space: nowrap;
+flex-shrink: 0;
 }
-.pill:hover { border-color: var(–accent); color: var(–text); }
-.pill.active { background: var(–accent); border-color: var(–accent); color: #000; font-weight: 600; }
-.pill.trap-pill.active    { background: var(–trap);     border-color: var(–trap); color: #000; }
-.pill.sporting-pill.active{ background: var(–sporting); border-color: var(–sporting); color: #fff; }
-.pill.super-pill.active   { background: var(–super);    border-color: var(–super); color: #fff; }
-.pill.skeet-pill.active   { background: var(–skeet);    border-color: var(–skeet); color: #000; }
+.pill:active { opacity: 0.7; }
+.pill.active            { background: var(–accent);   border-color: var(–accent);   color: #000; font-weight: 600; }
+.pill.trap-pill.active  { background: var(–trap);     border-color: var(–trap);     color: #000; }
+.pill.sport-pill.active { background: var(–sporting); border-color: var(–sporting); color: #fff; }
+.pill.super-pill.active { background: var(–super);    border-color: var(–super);    color: #fff; }
+.pill.skeet-pill.active { background: var(–skeet);    border-color: var(–skeet);    color: #000; }
 
-.search-wrap { margin-left: auto; position: relative; }
-.search-wrap input {
-background: var(–surface);
+.search-row {
+position: relative;
+}
+.search-row input {
+width: 100%;
+background: var(–card);
 border: 1px solid var(–border);
 border-radius: 8px;
 color: var(–text);
 font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
-padding: 7px 14px 7px 34px;
-width: 220px;
+font-size: 14px;
+padding: 8px 14px 8px 36px;
 outline: none;
-transition: border-color .15s;
+-webkit-appearance: none;
 }
-.search-wrap input:focus { border-color: var(–accent2); }
-.search-wrap input::placeholder { color: var(–muted); }
-.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(–muted); font-size: 14px; pointer-events: none; }
+.search-row input:focus { border-color: var(–accent2); }
+.search-row input::placeholder { color: var(–muted); }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(–muted); font-size: 15px; pointer-events: none; }
 
-.day-section { margin-bottom: 32px; }
-.day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.day-label { font-family: ‘DM Sans’, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: 0.5px; color: #4a5060; }
-.day-date { font-size: 13px; font-weight: 600; color: #4a5060; background: var(–surface); border: 1px solid var(–border); border-radius: 4px; padding: 3px 8px; }
+/* ── MAIN ── */
+main { padding: 16px; }
+
+/* ── DAY SECTION ── */
+.day-section { margin-bottom: 28px; }
+
+.day-header {
+display: flex;
+align-items: baseline;
+gap: 8px;
+margin-bottom: 12px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–border);
+}
+
+.day-label { font-size: 18px; font-weight: 600; color: #4a5060; }
+.day-date  { font-size: 13px; font-weight: 600; color: #4a5060; }
 .event-count { font-size: 11px; color: var(–muted); margin-left: auto; }
 
-.flights-grid { display: flex; flex-direction: column; gap: 6px; }
-.flight-row { display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: start; }
-.flight-time { text-align: right; padding-top: 10px; }
-.time-main { font-size: 15px; font-weight: 700; color: #4a5060; }
-.time-sub { font-size: 11px; font-weight: 500; color: #4a5060; margin-top: 2px; }
-.flight-squads { display: flex; gap: 8px; flex-wrap: wrap; }
+/* ── TIME BLOCK ── */
+.time-block { margin-bottom: 16px; }
 
+.time-header {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 8px;
+}
+
+.time-main { font-size: 15px; font-weight: 700; color: #4a5060; }
+.time-sub  { font-size: 11px; font-weight: 500; color: #4a5060; }
+
+/* ── SQUAD CARDS — full width on mobile ── */
 .squad-card {
 background: var(–card);
 border: 1px solid var(–border);
 border-radius: 10px;
-padding: 10px 14px;
-min-width: 200px;
-max-width: 260px;
-flex: 1;
+padding: 12px 14px;
 border-top: 3px solid var(–muted);
-transition: transform .15s, box-shadow .15s;
-cursor: default;
+margin-bottom: 8px;
+transition: box-shadow .15s;
 }
-.squad-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 .squad-card.discipline-Trap     { border-top-color: var(–trap); }
 .squad-card.discipline-Sporting { border-top-color: var(–sporting); }
 .squad-card.discipline-Super    { border-top-color: var(–super); }
 .squad-card.discipline-Skeet    { border-top-color: var(–skeet); }
-.squad-card.highlight { box-shadow: 0 0 0 2px var(–accent2); }
+.squad-card.highlight           { box-shadow: 0 0 0 2px var(–accent2); }
 
-.squad-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 8px; }
-.squad-name { font-size: 11px; font-weight: 600; color: var(–text); line-height: 1.3; }
-.squad-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 20px; color: var(–muted); line-height: 1; flex-shrink: 0; }
-.squad-meta { font-size: 10px; color: var(–muted); margin-bottom: 8px; }
+.squad-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 8px; }
+.squad-name   { font-size: 12px; font-weight: 600; color: var(–text); line-height: 1.3; margin-top: 4px; }
+.squad-num    { font-family: ‘Bebas Neue’, sans-serif; font-size: 22px; color: var(–muted); line-height: 1; flex-shrink: 0; }
+.squad-meta   { font-size: 11px; color: var(–muted); margin-bottom: 8px; }
 
-.discipline-tag { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.discipline-tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 .tag-Trap     { background: rgba(232,160,32,.15); color: var(–trap); }
 .tag-Sporting { background: rgba(59,139,235,.15);  color: var(–sporting); }
 .tag-Super    { background: rgba(168,85,247,.15);  color: var(–super); }
 .tag-Skeet    { background: rgba(46,201,126,.15);  color: var(–skeet); }
 
 .athlete-list { list-style: none; }
-.athlete-item { display: flex; align-items: center; gap: 6px; padding: 3px 0; font-size: 12px; border-top: 1px solid var(–border); }
+.athlete-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(–border); font-size: 13px; }
 .athlete-item:first-child { border-top: none; }
-.athlete-num  { font-size: 9px; color: var(–muted); width: 12px; flex-shrink: 0; }
-.athlete-name { flex: 1; color: var(–muted); font-weight: 300; }
+.athlete-num   { font-size: 10px; color: var(–muted); width: 14px; flex-shrink: 0; }
+.athlete-name  { flex: 1; color: var(–muted); font-weight: 300; }
 .athlete-name.eagle       { color: var(–text); font-weight: 600; }
 .athlete-name.highlighted { color: var(–accent2); font-weight: 600; }
-.athlete-name.open        { color: var(–muted); font-style: italic; font-weight: 300; }
-.athlete-level { font-size: 9px; color: var(–muted); }
+.athlete-name.open        { color: var(–muted); font-style: italic; }
+.athlete-level { font-size: 10px; color: var(–muted); flex-shrink: 0; }
 
-/* Athlete view */
-.athlete-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-.athlete-profile { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 16px; transition: all .15s; }
-.athlete-profile:hover { border-color: var(–accent2); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-.athlete-profile-name  { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-.athlete-profile-level { font-size: 11px; color: var(–muted); margin-bottom: 12px; }
-.athlete-events { display: flex; flex-direction: column; gap: 6px; }
-.athlete-event-row { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 6px 10px; background: var(–surface); border-radius: 6px; border: 1px solid var(–border); }
-.ae-discipline { width: 80px; flex-shrink: 0; }
-.ae-info { flex: 1; color: var(–muted); }
-.ae-time { font-weight: 500; color: var(–text); font-size: 11px; }
+/* ── ATHLETE VIEW ── */
+.athlete-profile { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
+.athlete-profile:active { border-color: var(–accent2); }
+.athlete-profile-name  { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.athlete-profile-level { font-size: 11px; color: var(–muted); margin-bottom: 10px; }
+.athlete-events { display: flex; flex-direction: column; gap: 5px; }
+.athlete-event-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(–surface); border-radius: 6px; border: 1px solid var(–border); }
+.ae-discipline { width: 76px; flex-shrink: 0; }
+.ae-info { flex: 1; color: var(–muted); font-size: 12px; }
+.ae-time { font-weight: 600; color: var(–text); font-size: 12px; flex-shrink: 0; }
 
 .view { display: none; }
 .view.active { display: block; }
@@ -189,54 +227,55 @@ cursor: default;
 .empty-state { text-align: center; padding: 60px 20px; color: var(–muted); }
 .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
 .empty-state p { font-size: 14px; }
-
-.divider { width: 1px; height: 20px; background: var(–border); margin: 0 4px; align-self: center; }
 </style>
 
 </head>
 <body>
 
 <header>
-  <div>
-    <div class="logo">Allen <span>Eagles</span></div>
-    <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:2px;">SCTP DFW LEAGUE CHAMPIONSHIP</div>
-  </div>
-  <div class="header-meta">
-    Apr 17–19, 2026<br>
-    36 Athletes · 4 Disciplines
-  </div>
-  <div class="tabs">
-    <button class="tab active" onclick="switchView(event,'timeline')">Timeline</button>
-    <button class="tab" onclick="switchView(event,'athletes')">By Athlete</button>
+  <div class="header-row1">
+    <div>
+      <div class="logo">Allen <span>Eagles</span></div>
+      <div class="logo-sub">SCTP DFW LEAGUE CHAMPIONSHIP</div>
+    </div>
+    <div class="header-meta">
+      Apr 17–19, 2026<br>36 Athletes · 4 Disciplines
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchView(event,'timeline')">Timeline</button>
+      <button class="tab" onclick="switchView(event,'athletes')">Athletes</button>
+    </div>
   </div>
 </header>
 
-<main>
-  <div class="filters">
+<div class="filters">
+  <div class="filter-row">
     <span class="filter-label">Day</span>
     <button class="pill active" onclick="filterDay(this,'all')">All Days</button>
     <button class="pill" onclick="filterDay(this,'04/17')">Apr 17</button>
     <button class="pill" onclick="filterDay(this,'04/18')">Apr 18</button>
     <button class="pill" onclick="filterDay(this,'04/19')">Apr 19</button>
-    <div class="divider"></div>
-    <span class="filter-label">Discipline</span>
-    <button class="pill trap-pill active"     onclick="filterDisc(this,'Trap')">Trap</button>
-    <button class="pill sporting-pill active" onclick="filterDisc(this,'Sporting')">Sporting Clays</button>
-    <button class="pill super-pill active"    onclick="filterDisc(this,'Super')">Super Sporting</button>
-    <button class="pill skeet-pill active"    onclick="filterDisc(this,'Skeet')">Skeet</button>
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search athlete…" oninput="doSearch(this.value)">
-    </div>
   </div>
+  <div class="filter-row">
+    <span class="filter-label">Discipline</span>
+    <button class="pill trap-pill active"  onclick="filterDisc(this,'Trap')">Trap</button>
+    <button class="pill sport-pill active" onclick="filterDisc(this,'Sporting')">Sporting Clays</button>
+    <button class="pill super-pill active" onclick="filterDisc(this,'Super')">Super Sporting</button>
+    <button class="pill skeet-pill active" onclick="filterDisc(this,'Skeet')">Skeet</button>
+  </div>
+  <div class="search-row">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search athlete…" oninput="doSearch(this.value)">
+  </div>
+</div>
 
+<main>
   <div id="view-timeline" class="view active"></div>
   <div id="view-athletes" class="view"></div>
 </main>
 
 <script>
 const squads = [
-  // TRAP
   { id:1,  disc:"Trap",     date:"04/17", flight:12, time:"3:30 PM", loc:"Location 5", num:34,  team:"Allen Eagles Team 8",
     athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"},{name:"London Dunn",team:"Trinity Christian Academy",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"}]},
   { id:2,  disc:"Trap",     date:"04/18", flight:6,  time:"11:30 AM",loc:"Location 6", num:68,  team:"Midlothian Clay Target Team 5",
@@ -255,8 +294,6 @@ const squads = [
     athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
   { id:9,  disc:"Trap",     date:"04/19", flight:6,  time:"11:30 AM",loc:"Location 5", num:124, team:"Allen Eagles Team 7",
     athletes:[{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
-
-  // SPORTING CLAYS
   { id:10, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2", num:3,   team:"Cowtown Clay Crushers",
     athletes:[{name:"Mateo Ortegon",team:"Cowtown",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
   { id:11, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2", num:4,   team:"Allen Eagles Team 13",
@@ -285,14 +322,10 @@ const squads = [
     athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Open",team:"",level:""}]},
   { id:23, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 10",num:91,  team:"Allen Eagles SC 12",
     athletes:[{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-
-  // SUPER SPORTING
   { id:24, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 1", num:169, team:"Allen Eagles Super 1",
     athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
   { id:25, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 2", num:171, team:"Allen Eagles Super 2",
     athletes:[{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-
-  // SKEET
   { id:26, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2", num:35,  team:"Allen Eagles Skeet 13",
     athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"}]},
   { id:27, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2", num:36,  team:"Trinity Christian Academy 5",
@@ -323,15 +356,15 @@ const squads = [
     athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
 ];
 
-// ── STATE ──
-let activeView = 'timeline';
+let activeView   = 'timeline';
 let filterDayVal = 'all';
-let filterDiscs = new Set(['Trap','Sporting','Super','Skeet']);
-let searchVal = '';
+let filterDiscs  = new Set(['Trap','Sporting','Super','Skeet']);
+let searchVal    = '';
 
 const discNames = {Trap:'Trap', Sporting:'Sporting Clays', Super:'Super Sporting', Skeet:'Skeet'};
+const monthNames = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dayNames   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-// Convert "9:00 AM" / "2:30 PM" to minutes since midnight for sorting
 function timeToMinutes(t) {
   const m = t.match(/(\d+):(\d+)\s*(AM|PM)/i);
   if (!m) return 0;
@@ -348,13 +381,13 @@ function levelShort(l) {
   if (l.includes('Jr. Varsity')) return 'Jr/V';
   if (l.includes('Entry')) return 'Entry';
   if (l.includes('Advanced')) return 'Adv';
-  return l.substring(0,6);
+  return l.substring(0,5);
 }
 
 function filteredSquads() {
   return squads.filter(s => {
-    const dayOk  = filterDayVal === 'all' || s.date === filterDayVal;
-    const discOk = filterDiscs.has(s.disc);
+    const dayOk   = filterDayVal === 'all' || s.date === filterDayVal;
+    const discOk  = filterDiscs.has(s.disc);
     const searchOk = !searchVal ||
       s.athletes.some(a => a.name.toLowerCase().includes(searchVal.toLowerCase())) ||
       s.team.toLowerCase().includes(searchVal.toLowerCase());
@@ -362,106 +395,87 @@ function filteredSquads() {
   });
 }
 
-// ── TIMELINE ──
 function renderTimeline() {
   const data = filteredSquads();
-  const container = document.getElementById('view-timeline');
+  const el = document.getElementById('view-timeline');
   if (!data.length) {
-    container.innerHTML = `<div class="empty-state"><div class="icon">🎯</div><p>No squads match your filters.</p></div>`;
+    el.innerHTML = `<div class="empty-state"><div class="icon">🎯</div><p>No squads match your filters.</p></div>`;
     return;
   }
 
-  // Sort squads by date then time
-  const sorted = [...data].sort((a, b) => {
-    if (a.date !== b.date) return a.date.localeCompare(b.date);
-    return timeToMinutes(a.time) - timeToMinutes(b.time);
-  });
+  const sorted = [...data].sort((a,b) =>
+    a.date !== b.date ? a.date.localeCompare(b.date) : timeToMinutes(a.time) - timeToMinutes(b.time)
+  );
 
-  // Group by date
+  // Group by date → time
   const byDate = {};
   sorted.forEach(s => {
     if (!byDate[s.date]) byDate[s.date] = {};
-    const tk = s.time;
-    if (!byDate[s.date][tk]) byDate[s.date][tk] = [];
-    byDate[s.date][tk].push(s);
+    if (!byDate[s.date][s.time]) byDate[s.date][s.time] = [];
+    byDate[s.date][s.time].push(s);
   });
 
-  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const monthNames = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
   let html = '';
-  let dayIndex = 0;
+  let dayIdx = 0;
 
   Object.keys(byDate).sort().forEach(date => {
-    dayIndex++;
+    dayIdx++;
     const [m, d] = date.split('/');
-    const jsDate = new Date(2026, parseInt(m) - 1, parseInt(d));
-    const dayName = dayNames[jsDate.getDay()];
-    const timeGroups = byDate[date];
-    const totalSquads = Object.values(timeGroups).reduce((n, arr) => n + arr.length, 0);
+    const jsDay  = new Date(2026, parseInt(m)-1, parseInt(d)).getDay();
+    const total  = Object.values(byDate[date]).reduce((n,a) => n+a.length, 0);
 
     html += `<div class="day-section">
       <div class="day-header">
-        <div class="day-label">Day ${dayIndex} — ${dayName}</div>
-        <div class="day-date">${monthNames[parseInt(m)]} ${parseInt(d)}, 2026</div>
-        <div class="event-count">${totalSquads} squad${totalSquads !== 1 ? 's' : ''}</div>
-      </div>
-      <div class="flights-grid">`;
+        <span class="day-label">Day ${dayIdx} — ${dayNames[jsDay]}</span>
+        <span class="day-date">${monthNames[parseInt(m)]} ${parseInt(d)}</span>
+        <span class="event-count">${total} squads</span>
+      </div>`;
 
-    // Times are already sorted because we sorted squads above and preserved insertion order
-    const sortedTimes = Object.keys(timeGroups).sort((a,b) => timeToMinutes(a) - timeToMinutes(b));
+    const times = Object.keys(byDate[date]).sort((a,b) => timeToMinutes(a)-timeToMinutes(b));
+    times.forEach(time => {
+      const tSquads = byDate[date][time];
+      html += `<div class="time-block">
+        <div class="time-header">
+          <span class="time-main">${time}</span>
+          <span class="time-sub">Flight ${tSquads[0].flight}</span>
+        </div>`;
 
-    sortedTimes.forEach(time => {
-      const timeSquads = timeGroups[time];
-      // find flight number from first squad at this time
-      const flightNum = timeSquads[0].flight;
-
-      html += `<div class="flight-row">
-        <div class="flight-time">
-          <div class="time-main">${time}</div>
-          <div class="time-sub">Flight ${flightNum}</div>
-        </div>
-        <div class="flight-squads">`;
-
-      timeSquads.forEach(sq => {
-        const isHighlight = searchVal && sq.athletes.some(a =>
-          a.name.toLowerCase().includes(searchVal.toLowerCase())
-        );
-        html += `<div class="squad-card discipline-${sq.disc}${isHighlight ? ' highlight' : ''}">
+      tSquads.forEach(sq => {
+        const isHL = searchVal && sq.athletes.some(a => a.name.toLowerCase().includes(searchVal.toLowerCase()));
+        html += `<div class="squad-card discipline-${sq.disc}${isHL?' highlight':''}">
           <div class="squad-header">
             <div>
               <span class="discipline-tag tag-${sq.disc}">${discNames[sq.disc]}</span>
-              <div class="squad-name" style="margin-top:5px">${sq.team}</div>
+              <div class="squad-name">${sq.team}</div>
             </div>
             <div class="squad-num">#${sq.num}</div>
           </div>
           <div class="squad-meta">📍 ${sq.loc}</div>
           <ul class="athlete-list">`;
 
-        sq.athletes.forEach((a, i) => {
+        sq.athletes.forEach((a,i) => {
           const isOpen  = a.name === 'Open';
-          const isEagle = !isOpen && (a.team || '').toLowerCase().includes('allen');
+          const isEagle = !isOpen && (a.team||'').toLowerCase().includes('allen');
           const isMatch = !isOpen && searchVal && a.name.toLowerCase().includes(searchVal.toLowerCase());
           html += `<li class="athlete-item">
             <span class="athlete-num">${i+1}</span>
-            <span class="athlete-name${isOpen ? ' open' : ''}${isEagle && !isMatch ? ' eagle' : ''}${isMatch ? ' highlighted' : ''}">${a.name}</span>
-            <span class="athlete-level">${isOpen ? '' : levelShort(a.level)}</span>
+            <span class="athlete-name${isOpen?' open':''}${isEagle&&!isMatch?' eagle':''}${isMatch?' highlighted':''}">${a.name}</span>
+            <span class="athlete-level">${isOpen?'':levelShort(a.level)}</span>
           </li>`;
         });
 
         html += `</ul></div>`;
       });
 
-      html += `</div></div>`;
+      html += `</div>`;
     });
 
-    html += `</div></div>`;
+    html += `</div>`;
   });
 
-  container.innerHTML = html;
+  el.innerHTML = html;
 }
 
-// ── ATHLETE VIEW ──
 function renderAthletes() {
   const athleteMap = {};
   squads.forEach(sq => {
@@ -476,26 +490,20 @@ function renderAthletes() {
     a.name.split(' ').pop().localeCompare(b.name.split(' ').pop())
   );
 
-  const filter = searchVal.toLowerCase();
+  const filter   = searchVal.toLowerCase();
   const filtered = filter ? athletes.filter(a => a.name.toLowerCase().includes(filter)) : athletes;
 
+  const el = document.getElementById('view-athletes');
   if (!filtered.length) {
-    document.getElementById('view-athletes').innerHTML =
-      `<div class="empty-state"><div class="icon">🎯</div><p>No athletes found.</p></div>`;
+    el.innerHTML = `<div class="empty-state"><div class="icon">🎯</div><p>No athletes found.</p></div>`;
     return;
   }
 
-  const monthNames = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  let html = `<div class="athlete-grid">`;
-
+  let html = '';
   filtered.forEach(athlete => {
     const evts = athlete.events
-      .filter(e => (filterDayVal === 'all' || e.date === filterDayVal) && filterDiscs.has(e.disc))
-      .sort((a,b) => {
-        if (a.date !== b.date) return a.date.localeCompare(b.date);
-        return timeToMinutes(a.time) - timeToMinutes(b.time);
-      });
-
+      .filter(e => (filterDayVal==='all'||e.date===filterDayVal) && filterDiscs.has(e.disc))
+      .sort((a,b) => a.date!==b.date ? a.date.localeCompare(b.date) : timeToMinutes(a.time)-timeToMinutes(b.time));
     if (!evts.length) return;
 
     html += `<div class="athlete-profile">
@@ -504,7 +512,7 @@ function renderAthletes() {
       <div class="athlete-events">`;
 
     evts.forEach(e => {
-      const [m, d] = e.date.split('/');
+      const [m,d] = e.date.split('/');
       html += `<div class="athlete-event-row">
         <div class="ae-discipline"><span class="discipline-tag tag-${e.disc}">${discNames[e.disc]}</span></div>
         <div class="ae-info">${monthNames[parseInt(m)]} ${parseInt(d)} · ${e.loc}</div>
@@ -515,11 +523,9 @@ function renderAthletes() {
     html += `</div></div>`;
   });
 
-  html += `</div>`;
-  document.getElementById('view-athletes').innerHTML = html;
+  el.innerHTML = html;
 }
 
-// ── CONTROLS ──
 function render() {
   if (activeView === 'timeline') renderTimeline();
   else renderAthletes();
@@ -536,7 +542,7 @@ function switchView(e, view) {
 
 function filterDay(el, val) {
   filterDayVal = val;
-  document.querySelectorAll('[onclick^="filterDay"]').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.filter-row:first-child .pill').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   render();
 }
