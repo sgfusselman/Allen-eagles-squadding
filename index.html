@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,224 +19,135 @@
     --sporting: #3b8beb;
     --super: #a855f7;
     --skeet: #2ec97e;
+    --doubles: #f43f5e;
   }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { background: #0a0c10; }
-  body { background: #0a0c10 !important; color: #e8eaf0 !important; font-family: ‘DM Sans’, -apple-system, BlinkMacSystemFont, ‘Segoe UI’, sans-serif; min-height: 100vh; -webkit-text-size-adjust: 100%; }
-  @media (prefers-color-scheme: light) {
-  html, body { background: #0a0c10 !important; color: #e8eaf0 !important; }
+  body { background: #0a0c10 !important; color: #e8eaf0 !important; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; -webkit-text-size-adjust: 100%; }
+  @media (prefers-color-scheme: light) { html, body { background: #0a0c10 !important; color: #e8eaf0 !important; } }
+
+  /* ── HEADER ── */
+  header { background: #12151c !important; border-bottom: 1px solid #252a38; padding: 12px 16px; position: sticky; top: 0; z-index: 100; }
+
+  .header-row1 { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+
+  .logo { font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-size: 26px; letter-spacing: 2px; color: #e8a020; line-height: 1; }
+  .logo span { color: #e8eaf0; }
+  .logo-sub { font-size: 9px; color: #6b7280; letter-spacing: 1px; margin-top: 1px; }
+
+  .tabs { display: flex; gap: 3px; background: #0a0c10; border-radius: 8px; padding: 3px; flex-shrink: 0; }
+  .tab { padding: 5px 10px; border-radius: 5px; border: none; background: transparent !important; color: #6b7280 !important; font-family: 'DM Sans', -apple-system, sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; -webkit-appearance: none; }
+  .tab.active { background: #1a1e28 !important; color: #e8eaf0 !important; }
+
+  /* Tournament selector */
+  .tourney-select-wrap { width: 100%; }
+  .tourney-select {
+    width: 100%;
+    background: #1a1e28 !important;
+    border: 1px solid #252a38 !important;
+    border-radius: 8px;
+    color: #e8eaf0 !important;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 12px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    padding-right: 32px;
   }
 
-/* ── HEADER ── */
-header {
-background: var(–surface);
-border-bottom: 1px solid var(–border);
-padding: 12px 16px;
-position: sticky;
-top: 0;
-z-index: 100;
-}
+  .tourney-meta { font-size: 11px; color: #6b7280; margin-top: 5px; }
 
-.header-row1 {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 10px;
-}
+  /* ── FILTERS ── */
+  .filters { padding: 10px 16px; background: #12151c !important; border-bottom: 1px solid #252a38; display: flex; flex-direction: column; gap: 8px; }
 
-.logo { font-family: ‘Bebas Neue’, ‘Arial Black’, sans-serif; font-size: 26px; letter-spacing: 2px; color: var(–accent); line-height: 1; }
-.logo span { color: var(–text); }
-.logo-sub { font-size: 9px; color: var(–muted); letter-spacing: 1px; margin-top: 1px; }
+  .filter-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .filter-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; flex-shrink: 0; width: 70px; }
 
-.header-meta { font-size: 11px; color: var(–muted); line-height: 1.5; text-align: center; flex: 1; }
+  .day-pills { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
 
-.tabs {
-display: flex;
-gap: 3px;
-background: var(–bg);
-border-radius: 8px;
-padding: 3px;
-flex-shrink: 0;
-}
-.tab {
-padding: 5px 10px;
-border-radius: 5px;
-border: none;
-background: transparent;
-color: var(–muted);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 12px;
-font-weight: 500;
-cursor: pointer;
-transition: all .15s;
-white-space: nowrap;
-}
-.tab.active { background: var(–card); color: var(–text); }
+  .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; flex: 1; }
 
-/* ── FILTERS ── */
-.filters {
-padding: 10px 16px;
-background: var(–surface);
-border-bottom: 1px solid var(–border);
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
+  .pill { padding: 4px 12px; border-radius: 20px; border: 1px solid #252a38 !important; background: #12151c !important; color: #6b7280 !important; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; -webkit-appearance: none; appearance: none; text-align: center; }
+  .pill.active            { background: #e8a020 !important; border-color: #e8a020 !important; color: #000 !important; font-weight: 600; }
+  .pill.trap-pill.active  { background: #e8a020 !important; border-color: #e8a020 !important; color: #000 !important; }
+  .pill.sport-pill.active { background: #3b8beb !important; border-color: #3b8beb !important; color: #fff !important; }
+  .pill.super-pill.active { background: #a855f7 !important; border-color: #a855f7 !important; color: #fff !important; }
+  .pill.skeet-pill.active { background: #2ec97e !important; border-color: #2ec97e !important; color: #000 !important; }
+  .pill.doubles-pill.active { background: #f43f5e !important; border-color: #f43f5e !important; color: #fff !important; }
 
-.filter-row {
-display: flex;
-align-items: center;
-gap: 8px;
-flex-wrap: wrap;
-padding-bottom: 2px;
-}
-.disc-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 6px;
-flex: 1;
-}
+  .search-row { position: relative; }
+  .search-row input { width: 100%; background: #1a1e28 !important; border: 1px solid #252a38 !important; border-radius: 8px; color: #e8eaf0 !important; font-family: 'DM Sans', -apple-system, sans-serif; font-size: 14px; padding: 8px 14px 8px 36px; outline: none; -webkit-appearance: none; appearance: none; }
+  .search-row input::placeholder { color: #6b7280 !important; }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #6b7280; font-size: 15px; pointer-events: none; }
 
-.filter-label {
-font-size: 10px;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(–muted);
-flex-shrink: 0;
-width: 70px;
-}
+  /* ── MAIN ── */
+  main { padding: 16px; }
 
-.pill {
-padding: 4px 12px;
-border-radius: 20px;
-border: 1px solid #252a38 !important;
-background: #12151c !important;
-color: #6b7280 !important;
-font-size: 12px;
-font-weight: 500;
-cursor: pointer;
-transition: all .15s;
-white-space: nowrap;
-flex-shrink: 0;
--webkit-appearance: none;
-appearance: none;
-}
-.pill:active { opacity: 0.7; }
-.pill.active            { background: #e8a020 !important; border-color: #e8a020 !important; color: #000 !important; font-weight: 600; }
-.pill.trap-pill.active  { background: #e8a020 !important; border-color: #e8a020 !important; color: #000 !important; }
-.pill.sport-pill.active { background: #3b8beb !important; border-color: #3b8beb !important; color: #fff !important; }
-.pill.super-pill.active { background: #a855f7 !important; border-color: #a855f7 !important; color: #fff !important; }
-.pill.skeet-pill.active { background: #2ec97e !important; border-color: #2ec97e !important; color: #000 !important; }
+  .day-section { margin-bottom: 28px; }
+  .day-header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #252a38; }
+  .day-label { font-size: 18px; font-weight: 600; color: #4a5060; }
+  .day-date  { font-size: 13px; font-weight: 600; color: #4a5060; }
+  .event-count { font-size: 11px; color: #6b7280; margin-left: auto; }
 
-.search-row {
-position: relative;
-}
-.search-row input {
-width: 100%;
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 8px;
-color: var(–text);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-padding: 8px 14px 8px 36px;
-outline: none;
--webkit-appearance: none;
-}
-.search-row input:focus { border-color: var(–accent2); }
-.search-row input::placeholder { color: var(–muted); }
-.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(–muted); font-size: 15px; pointer-events: none; }
+  .time-block { margin-bottom: 16px; }
+  .time-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .time-main { font-size: 15px; font-weight: 700; color: #4a5060; }
+  .time-sub  { font-size: 11px; font-weight: 500; color: #4a5060; }
 
-/* ── MAIN ── */
-main { padding: 16px; }
+  .squad-card { background: #1a1e28 !important; border: 1px solid #252a38; border-radius: 10px; padding: 12px 14px; border-top: 3px solid #6b7280; margin-bottom: 8px; }
+  .squad-card.discipline-Trap     { border-top-color: #e8a020; }
+  .squad-card.discipline-Sporting { border-top-color: #3b8beb; }
+  .squad-card.discipline-Super    { border-top-color: #a855f7; }
+  .squad-card.discipline-Skeet    { border-top-color: #2ec97e; }
+  .squad-card.discipline-TrapDoubles  { border-top-color: #f43f5e; }
+  .squad-card.discipline-SkeetDoubles { border-top-color: #f43f5e; }
+  .squad-card.highlight { box-shadow: 0 0 0 2px #3b8beb; }
 
-/* ── DAY SECTION ── */
-.day-section { margin-bottom: 28px; }
+  .squad-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 8px; }
+  .squad-name   { font-size: 12px; font-weight: 600; color: #e8eaf0; line-height: 1.3; margin-top: 4px; }
+  .squad-num    { font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-size: 22px; color: #6b7280; line-height: 1; flex-shrink: 0; }
+  .squad-meta   { font-size: 11px; color: #6b7280; margin-bottom: 8px; }
 
-.day-header {
-display: flex;
-align-items: baseline;
-gap: 8px;
-margin-bottom: 12px;
-padding-bottom: 8px;
-border-bottom: 1px solid var(–border);
-}
+  .discipline-tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tag-Trap         { background: rgba(232,160,32,.15); color: #e8a020; }
+  .tag-Sporting     { background: rgba(59,139,235,.15);  color: #3b8beb; }
+  .tag-Super        { background: rgba(168,85,247,.15);  color: #a855f7; }
+  .tag-Skeet        { background: rgba(46,201,126,.15);  color: #2ec97e; }
+  .tag-TrapDoubles  { background: rgba(244,63,94,.15);   color: #f43f5e; }
+  .tag-SkeetDoubles { background: rgba(244,63,94,.15);   color: #f43f5e; }
 
-.day-label { font-size: 18px; font-weight: 600; color: #4a5060; }
-.day-date  { font-size: 13px; font-weight: 600; color: #4a5060; }
-.event-count { font-size: 11px; color: var(–muted); margin-left: auto; }
+  .athlete-list { list-style: none; }
+  .athlete-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid #252a38; font-size: 13px; }
+  .athlete-item:first-child { border-top: none; }
+  .athlete-num   { font-size: 10px; color: #6b7280; width: 14px; flex-shrink: 0; }
+  .athlete-name  { flex: 1; color: #6b7280; font-weight: 300; }
+  .athlete-name.eagle       { color: #e8eaf0; font-weight: 600; }
+  .athlete-name.highlighted { color: #3b8beb; font-weight: 600; }
+  .athlete-name.open        { color: #6b7280; font-style: italic; }
+  .athlete-level { font-size: 10px; color: #6b7280; flex-shrink: 0; }
 
-/* ── TIME BLOCK ── */
-.time-block { margin-bottom: 16px; }
+  /* Athlete view */
+  .athlete-profile { background: #1a1e28 !important; border: 1px solid #252a38; border-radius: 12px; padding: 14px; margin-bottom: 10px; }
+  .athlete-profile-name  { font-size: 15px; font-weight: 600; color: #e8eaf0; margin-bottom: 2px; }
+  .athlete-profile-level { font-size: 11px; color: #6b7280; margin-bottom: 10px; }
+  .athlete-events { display: flex; flex-direction: column; gap: 5px; }
+  .athlete-event-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: #12151c !important; border-radius: 6px; border: 1px solid #252a38; }
+  .ae-discipline { width: 84px; flex-shrink: 0; }
+  .ae-info { flex: 1; color: #6b7280; font-size: 12px; }
+  .ae-time { font-weight: 600; color: #e8eaf0; font-size: 12px; flex-shrink: 0; }
 
-.time-header {
-display: flex;
-align-items: center;
-gap: 8px;
-margin-bottom: 8px;
-}
+  .view { display: none; }
+  .view.active { display: block; }
 
-.time-main { font-size: 15px; font-weight: 700; color: #4a5060; }
-.time-sub  { font-size: 11px; font-weight: 500; color: #4a5060; }
-
-/* ── SQUAD CARDS — full width on mobile ── */
-.squad-card {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: 10px;
-padding: 12px 14px;
-border-top: 3px solid var(–muted);
-margin-bottom: 8px;
-transition: box-shadow .15s;
-}
-.squad-card.discipline-Trap     { border-top-color: var(–trap); }
-.squad-card.discipline-Sporting { border-top-color: var(–sporting); }
-.squad-card.discipline-Super    { border-top-color: var(–super); }
-.squad-card.discipline-Skeet    { border-top-color: var(–skeet); }
-.squad-card.highlight           { box-shadow: 0 0 0 2px var(–accent2); }
-
-.squad-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 8px; }
-.squad-name   { font-size: 12px; font-weight: 600; color: var(–text); line-height: 1.3; margin-top: 4px; }
-.squad-num    { font-family: ‘Bebas Neue’, sans-serif; font-size: 22px; color: var(–muted); line-height: 1; flex-shrink: 0; }
-.squad-meta   { font-size: 11px; color: var(–muted); margin-bottom: 8px; }
-
-.discipline-tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-.tag-Trap     { background: rgba(232,160,32,.15); color: var(–trap); }
-.tag-Sporting { background: rgba(59,139,235,.15);  color: var(–sporting); }
-.tag-Super    { background: rgba(168,85,247,.15);  color: var(–super); }
-.tag-Skeet    { background: rgba(46,201,126,.15);  color: var(–skeet); }
-
-.athlete-list { list-style: none; }
-.athlete-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(–border); font-size: 13px; }
-.athlete-item:first-child { border-top: none; }
-.athlete-num   { font-size: 10px; color: var(–muted); width: 14px; flex-shrink: 0; }
-.athlete-name  { flex: 1; color: var(–muted); font-weight: 300; }
-.athlete-name.eagle       { color: var(–text); font-weight: 600; }
-.athlete-name.highlighted { color: var(–accent2); font-weight: 600; }
-.athlete-name.open        { color: var(–muted); font-style: italic; }
-.athlete-level { font-size: 10px; color: var(–muted); flex-shrink: 0; }
-
-/* ── ATHLETE VIEW ── */
-.athlete-profile { background: var(–card); border: 1px solid var(–border); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
-.athlete-profile:active { border-color: var(–accent2); }
-.athlete-profile-name  { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-.athlete-profile-level { font-size: 11px; color: var(–muted); margin-bottom: 10px; }
-.athlete-events { display: flex; flex-direction: column; gap: 5px; }
-.athlete-event-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: var(–surface); border-radius: 6px; border: 1px solid var(–border); }
-.ae-discipline { width: 76px; flex-shrink: 0; }
-.ae-info { flex: 1; color: var(–muted); font-size: 12px; }
-.ae-time { font-weight: 600; color: var(–text); font-size: 12px; flex-shrink: 0; }
-
-.view { display: none; }
-.view.active { display: block; }
-
-.empty-state { text-align: center; padding: 60px 20px; color: var(–muted); }
-.empty-state .icon { font-size: 40px; margin-bottom: 12px; }
-.empty-state p { font-size: 14px; }
+  .empty-state { text-align: center; padding: 60px 20px; color: #6b7280; }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
 </style>
-
 </head>
 <body>
 
@@ -245,34 +155,30 @@ transition: box-shadow .15s;
   <div class="header-row1">
     <div>
       <div class="logo">Allen <span>Eagles</span></div>
-      <div class="logo-sub">SCTP DFW LEAGUE CHAMPIONSHIP</div>
-    </div>
-    <div class="header-meta">
-      Apr 17–19, 2026<br>36 Athletes · 4 Disciplines
+      <div class="logo-sub">SCTP SCHEDULE VIEWER</div>
     </div>
     <div class="tabs">
       <button class="tab active" onclick="switchView(event,'timeline')">Timeline</button>
       <button class="tab" onclick="switchView(event,'athletes')">Athletes</button>
     </div>
   </div>
+  <div class="tourney-select-wrap">
+    <select class="tourney-select" id="tourneySelect" onchange="loadTournament(this.value)">
+      <option value="dfw">DFW League Championship — Apr 17–19, 2026</option>
+      <option value="regional">SW Regional Championship — May 1–3, 2026</option>
+    </select>
+    <div class="tourney-meta" id="tourneyMeta">Apr 17–19, 2026 · 36 Athletes · 4 Disciplines</div>
+  </div>
 </header>
 
 <div class="filters">
   <div class="filter-row">
     <span class="filter-label">Day</span>
-    <button class="pill active" onclick="filterDay(this,'all')">All Days</button>
-    <button class="pill" onclick="filterDay(this,'04/17')">Apr 17</button>
-    <button class="pill" onclick="filterDay(this,'04/18')">Apr 18</button>
-    <button class="pill" onclick="filterDay(this,'04/19')">Apr 19</button>
+    <div class="day-pills" id="dayPills"></div>
   </div>
   <div class="filter-row">
     <span class="filter-label">Discipline</span>
-    <div class="disc-grid">
-      <button class="pill trap-pill active"  onclick="filterDisc(this,'Trap')">Trap</button>
-      <button class="pill sport-pill active" onclick="filterDisc(this,'Sporting')">Sporting Clays</button>
-      <button class="pill super-pill active" onclick="filterDisc(this,'Super')">Super Sporting</button>
-      <button class="pill skeet-pill active" onclick="filterDisc(this,'Skeet')">Skeet</button>
-    </div>
+    <div class="disc-grid" id="discGrid"></div>
   </div>
   <div class="search-row">
     <span class="search-icon">🔍</span>
@@ -286,93 +192,190 @@ transition: box-shadow .15s;
 </main>
 
 <script>
-const squads = [
-  { id:1,  disc:"Trap",     date:"04/17", flight:12, time:"3:30 PM", loc:"Location 5", num:34,  team:"Allen Eagles Team 8",
-    athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"},{name:"London Dunn",team:"Trinity Christian Academy",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:2,  disc:"Trap",     date:"04/18", flight:6,  time:"11:30 AM",loc:"Location 6", num:68,  team:"Midlothian Clay Target Team 5",
-    athletes:[{name:"Heston Krupala",team:"Midlothian",level:"Intermediate/Advanced"},{name:"Baze Russell",team:"Black Mask Shooters",level:"Intermediate/Advanced"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
-  { id:3,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 5", num:118, team:"Allen Eagles Team 1",
-    athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:4,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 6", num:119, team:"Allen Eagles Team 2",
-    athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
-  { id:5,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 7", num:120, team:"Allen Eagles Team 3",
-    athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:6,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 5", num:121, team:"Allen Eagles Team 4",
-    athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
-  { id:7,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 6", num:122, team:"Allen Eagles Team 5",
-    athletes:[{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-  { id:8,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 7", num:123, team:"Allen Eagles Team 6",
-    athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
-  { id:9,  disc:"Trap",     date:"04/19", flight:6,  time:"11:30 AM",loc:"Location 5", num:124, team:"Allen Eagles Team 7",
-    athletes:[{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
-  { id:10, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2", num:3,   team:"Cowtown Clay Crushers",
-    athletes:[{name:"Mateo Ortegon",team:"Cowtown",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
-  { id:11, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2", num:4,   team:"Allen Eagles Team 13",
-    athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:12, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 1", num:25,  team:"Allen Eagles SC 1",
-    athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:13, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 2", num:27,  team:"Allen Eagles SC 2",
-    athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:14, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 3", num:29,  team:"Allen Eagles SC 3",
-    athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:15, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 4", num:32,  team:"Allen Eagles SC 4",
-    athletes:[{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Jack Cotton",team:"Prosper",level:"Intermediate/Advanced"}]},
-  { id:16, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 5", num:34,  team:"Allen Eagles SC 5",
-    athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:17, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 6", num:36,  team:"Allen Eagles SC 6",
-    athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
-  { id:18, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 7", num:38,  team:"Allen Eagles SC 7",
-    athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Walker McLeroy",team:"Prosper",level:"Senior/Varsity"}]},
-  { id:19, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 1", num:73,  team:"Allen Eagles SC 8",
-    athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
-  { id:20, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 6", num:84,  team:"Allen Eagles SC 9",
-    athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
-  { id:21, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 7", num:86,  team:"Allen Eagles SC 10",
-    athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
-  { id:22, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 9", num:89,  team:"Allen Eagles SC 11",
-    athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Open",team:"",level:""}]},
-  { id:23, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 10",num:91,  team:"Allen Eagles SC 12",
-    athletes:[{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-  { id:24, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 1", num:169, team:"Allen Eagles Super 1",
-    athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
-  { id:25, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 2", num:171, team:"Allen Eagles Super 2",
-    athletes:[{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-  { id:26, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2", num:35,  team:"Allen Eagles Skeet 13",
-    athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:27, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2", num:36,  team:"Trinity Christian Academy 5",
-    athletes:[{name:"London Dunn",team:"Trinity Christian Academy",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
-  { id:28, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 1", num:82,  team:"Allen Eagles Skeet 1",
-    athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
-  { id:29, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 2", num:84,  team:"Allen Eagles Skeet 2",
-    athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
-  { id:30, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 3", num:86,  team:"Allen Eagles Skeet 3",
-    athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
-  { id:31, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 4", num:88,  team:"Allen Eagles Skeet 4",
-    athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Open",team:"",level:""}]},
-  { id:32, disc:"Skeet",    date:"04/18", flight:2,  time:"10:00 AM",loc:"Location 1", num:89,  team:"Allen Eagles Skeet 5",
-    athletes:[{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-  { id:33, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 1", num:114, team:"Allen Eagles Skeet 6",
-    athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:34, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 2", num:116, team:"Allen Eagles Skeet 7",
-    athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:35, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 3", num:118, team:"Allen Eagles Skeet 8",
-    athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:36, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 4", num:119, team:"Allen Eagles Skeet 12",
-    athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
-  { id:37, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 4", num:120, team:"Allen Eagles Skeet 9",
-    athletes:[{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
-  { id:38, disc:"Skeet",    date:"04/18", flight:7,  time:"3:00 PM", loc:"Location 3", num:134, team:"Allen Eagles Skeet 10",
-    athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
-  { id:39, disc:"Skeet",    date:"04/18", flight:7,  time:"3:00 PM", loc:"Location 4", num:136, team:"Allen Eagles Skeet 11",
-    athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
-];
+// ── TOURNAMENT DATA ──
+const tournaments = {
 
+  dfw: {
+    name: "DFW League Championship",
+    meta: "Apr 17–19, 2026 · 36 Athletes · 4 Disciplines",
+    squads: [
+      { id:1,  disc:"Trap",     date:"04/17", flight:12, time:"3:30 PM", loc:"Location 5",  num:34,  team:"Allen Eagles Team 8",
+        athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"},{name:"London Dunn",team:"Trinity Christian Academy",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:2,  disc:"Trap",     date:"04/18", flight:6,  time:"11:30 AM",loc:"Location 6",  num:68,  team:"Midlothian Clay Target Team 5",
+        athletes:[{name:"Heston Krupala",team:"Midlothian",level:"Intermediate/Advanced"},{name:"Baze Russell",team:"Black Mask Shooters",level:"Intermediate/Advanced"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
+      { id:3,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 5",  num:118, team:"Allen Eagles Team 1",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:4,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 6",  num:119, team:"Allen Eagles Team 2",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:5,  disc:"Trap",     date:"04/19", flight:4,  time:"10:30 AM",loc:"Location 7",  num:120, team:"Allen Eagles Team 3",
+        athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:6,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 5",  num:121, team:"Allen Eagles Team 4",
+        athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
+      { id:7,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 6",  num:122, team:"Allen Eagles Team 5",
+        athletes:[{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
+      { id:8,  disc:"Trap",     date:"04/19", flight:5,  time:"11:00 AM",loc:"Location 7",  num:123, team:"Allen Eagles Team 6",
+        athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:9,  disc:"Trap",     date:"04/19", flight:6,  time:"11:30 AM",loc:"Location 5",  num:124, team:"Allen Eagles Team 7",
+        athletes:[{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      { id:10, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2",  num:3,   team:"Cowtown Clay Crushers",
+        athletes:[{name:"Mateo Ortegon",team:"Cowtown",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:11, disc:"Sporting", date:"04/17", flight:1,  time:"5:00 PM", loc:"Location 2",  num:4,   team:"Allen Eagles Team 13",
+        athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:12, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 1",  num:25,  team:"Allen Eagles SC 1",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:13, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 2",  num:27,  team:"Allen Eagles SC 2",
+        athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:14, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 3",  num:29,  team:"Allen Eagles SC 3",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:15, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 4",  num:32,  team:"Allen Eagles SC 4",
+        athletes:[{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Jack Cotton",team:"Prosper",level:"Intermediate/Advanced"}]},
+      { id:16, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 5",  num:34,  team:"Allen Eagles SC 5",
+        athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:17, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 6",  num:36,  team:"Allen Eagles SC 6",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      { id:18, disc:"Sporting", date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 7",  num:38,  team:"Allen Eagles SC 7",
+        athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Walker McLeroy",team:"Prosper",level:"Senior/Varsity"}]},
+      { id:19, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 1",  num:73,  team:"Allen Eagles SC 8",
+        athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
+      { id:20, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 6",  num:84,  team:"Allen Eagles SC 9",
+        athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:21, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 7",  num:86,  team:"Allen Eagles SC 10",
+        athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:22, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 9",  num:89,  team:"Allen Eagles SC 11",
+        athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Open",team:"",level:""}]},
+      { id:23, disc:"Sporting", date:"04/18", flight:3,  time:"2:00 PM", loc:"Location 10", num:91,  team:"Allen Eagles SC 12",
+        athletes:[{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
+      { id:24, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 1",  num:169, team:"Allen Eagles Super 1",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:25, disc:"Super",    date:"04/19", flight:3,  time:"2:00 PM", loc:"Location 2",  num:171, team:"Allen Eagles Super 2",
+        athletes:[{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
+      { id:26, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2",  num:35,  team:"Allen Eagles Skeet 13",
+        athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Therese Fusselman",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Luke Fusselman",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:27, disc:"Skeet",    date:"04/17", flight:5,  time:"2:00 PM", loc:"Location 2",  num:36,  team:"Trinity Christian Academy 5",
+        athletes:[{name:"London Dunn",team:"Trinity Christian Academy",level:"Senior/Jr. Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:28, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 1",  num:82,  team:"Allen Eagles Skeet 1",
+        athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
+      { id:29, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 2",  num:84,  team:"Allen Eagles Skeet 2",
+        athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:30, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 3",  num:86,  team:"Allen Eagles Skeet 3",
+        athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:31, disc:"Skeet",    date:"04/18", flight:1,  time:"9:00 AM", loc:"Location 4",  num:88,  team:"Allen Eagles Skeet 4",
+        athletes:[{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Caleb Moore",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Open",team:"",level:""}]},
+      { id:32, disc:"Skeet",    date:"04/18", flight:2,  time:"10:00 AM",loc:"Location 1",  num:89,  team:"Allen Eagles Skeet 5",
+        athletes:[{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Camille Murillo",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
+      { id:33, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 1",  num:114, team:"Allen Eagles Skeet 6",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:34, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 2",  num:116, team:"Allen Eagles Skeet 7",
+        athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:35, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 3",  num:118, team:"Allen Eagles Skeet 8",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:36, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 4",  num:119, team:"Allen Eagles Skeet 12",
+        athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:37, disc:"Skeet",    date:"04/18", flight:5,  time:"1:00 PM", loc:"Location 4",  num:120, team:"Allen Eagles Skeet 9",
+        athletes:[{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Open",team:"",level:""}]},
+      { id:38, disc:"Skeet",    date:"04/18", flight:7,  time:"3:00 PM", loc:"Location 3",  num:134, team:"Allen Eagles Skeet 10",
+        athletes:[{name:"Kyle Erickson",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:39, disc:"Skeet",    date:"04/18", flight:7,  time:"3:00 PM", loc:"Location 4",  num:136, team:"Allen Eagles Skeet 11",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+    ]
+  },
+
+  regional: {
+    name: "SW Regional Championship",
+    meta: "May 1–3, 2026 · 34 Athletes · 5 Disciplines",
+    squads: [
+      // TRAP DOUBLES — 05/01
+      { id:101, disc:"TrapDoubles", date:"05/01", flight:6, time:"2:00 PM", loc:"Location 10", num:27, team:"Allen Eagles Competitive Shooting Team",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
+      { id:102, disc:"TrapDoubles", date:"05/01", flight:6, time:"2:00 PM", loc:"Location 11", num:28, team:"Allen Eagles Competitive Shooting Team 2",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""},{name:"Open",team:"",level:""}]},
+      // SKEET DOUBLES — 05/01
+      { id:103, disc:"SkeetDoubles", date:"05/01", flight:6, time:"3:15 PM", loc:"Location 2", num:74, team:"Allen Eagles Competitive Shooting Team 2",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:104, disc:"SkeetDoubles", date:"05/01", flight:6, time:"3:15 PM", loc:"Location 3", num:76, team:"Allen Eagles Competitive Shooting Team",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      // SPORTING CLAYS — 05/02
+      { id:105, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 1",  num:1,  team:"Allen Eagles Competitive Shooting Team",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Gavan Deedon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:106, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 2",  num:3,  team:"Allen Eagles Competitive Shooting Team 2",
+        athletes:[{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lyla Mixon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
+      { id:107, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 3",  num:5,  team:"Allen Eagles Competitive Shooting Team 3",
+        athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:108, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 4",  num:7,  team:"Allen Eagles Competitive Shooting Team 4",
+        athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:109, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 5",  num:9,  team:"Allen Eagles Competitive Shooting Team 5",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:110, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 6",  num:11, team:"Allen Eagles Competitive Shooting Team 6",
+        athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:111, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 7",  num:13, team:"Allen Eagles Competitive Shooting Team 7",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Nathan Henslee",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      { id:112, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 8",  num:15, team:"Allen Eagles Competitive Shooting Team 8",
+        athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:113, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 9",  num:17, team:"Allen Eagles Competitive Shooting Team 9",
+        athletes:[{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:114, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 10", num:19, team:"Allen Eagles Competitive Shooting Team 10",
+        athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:115, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 11", num:21, team:"Allen Eagles Competitive Shooting Team 11",
+        athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:116, disc:"Sporting", date:"05/02", flight:1, time:"9:00 AM", loc:"Location 12", num:23, team:"Allen Eagles Competitive Shooting Team 12",
+        athletes:[{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      // SKEET — 05/02
+      { id:117, disc:"Skeet", date:"05/02", flight:3, time:"1:00 PM", loc:"Location 3",  num:33, team:"Allen Eagles Competitive Shooting Team 12",
+        athletes:[{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      { id:118, disc:"Skeet", date:"05/02", flight:3, time:"1:00 PM", loc:"Location 4",  num:35, team:"Allen Eagles Competitive Shooting Team 11",
+        athletes:[{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:119, disc:"Skeet", date:"05/02", flight:3, time:"1:00 PM", loc:"Location 5",  num:37, team:"Allen Eagles Competitive Shooting Team 10",
+        athletes:[{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:120, disc:"Skeet", date:"05/02", flight:3, time:"1:00 PM", loc:"Location 6",  num:39, team:"Allen Eagles Competitive Shooting Team 9",
+        athletes:[{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:121, disc:"Skeet", date:"05/02", flight:3, time:"1:00 PM", loc:"Location 7",  num:41, team:"Allen Eagles Competitive Shooting Team 8",
+        athletes:[{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:122, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 1",  num:43, team:"Allen Eagles Competitive Shooting Team",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Gavan Deedon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:123, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 2",  num:45, team:"Allen Eagles Competitive Shooting Team 2",
+        athletes:[{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lyla Mixon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"}]},
+      { id:124, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 3",  num:47, team:"Allen Eagles Competitive Shooting Team 3",
+        athletes:[{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Open",team:"",level:""}]},
+      { id:125, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 4",  num:49, team:"Allen Eagles Competitive Shooting Team 4",
+        athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:126, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 5",  num:51, team:"Allen Eagles Competitive Shooting Team 5",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:127, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 6",  num:53, team:"Allen Eagles Competitive Shooting Team 6",
+        athletes:[{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:128, disc:"Skeet", date:"05/02", flight:4, time:"3:00 PM", loc:"Location 7",  num:55, team:"Allen Eagles Competitive Shooting Team 7",
+        athletes:[{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Nathan Henslee",team:"Allen Eagles",level:"Intermediate/Entry Level"}]},
+      // TRAP — 05/03
+      { id:129, disc:"Trap", date:"05/03", flight:2, time:"10:00 AM", loc:"Location 9",  num:56, team:"Allen Eagles Competitive Shooting Team",
+        athletes:[{name:"Lukas Dittrich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Gavan Deedon",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Dennis Osborne",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Vincent Calovich",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kenny Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:130, disc:"Trap", date:"05/03", flight:2, time:"10:00 AM", loc:"Location 10", num:57, team:"Allen Eagles Competitive Shooting Team 2",
+        athletes:[{name:"Matthew Raff",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Jadyn Pendleton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Lucas Wilton",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Kane Cox",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Lyla Mixon",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:131, disc:"Trap", date:"05/03", flight:2, time:"10:00 AM", loc:"Location 11", num:58, team:"Allen Eagles Competitive Shooting Team 3",
+        athletes:[{name:"Oliver Levy",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Noah Vaughn Bjerke",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Carly Drake",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Ryder Clausen",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Maggie Boren",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:132, disc:"Trap", date:"05/03", flight:2, time:"10:00 AM", loc:"Location 12", num:59, team:"Allen Eagles Competitive Shooting Team 4",
+        athletes:[{name:"Colin Parks",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Benjamin Assa",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Camdyn Stovall",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Lukas Terrell",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Rhys Van Der Upwich",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:133, disc:"Trap", date:"05/03", flight:2, time:"10:00 AM", loc:"Location 13", num:60, team:"Allen Eagles Competitive Shooting Team 5",
+        athletes:[{name:"Mackenzie Terrell",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Ella Calvert",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Harlee Evans-Walker",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Emerson Gallagher",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Keira Calovich",team:"Allen Eagles",level:"Intermediate/Advanced"}]},
+      { id:134, disc:"Trap", date:"05/03", flight:3, time:"11:00 AM", loc:"Location 9",  num:61, team:"Allen Eagles Competitive Shooting Team 6",
+        athletes:[{name:"Edmund Joan Murillo",team:"Allen Eagles",level:"Senior/Varsity"},{name:"Fiza Adnan",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Yaroslav Shkundaleu",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Rishayna Sachdev",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Noah Howell",team:"Allen Eagles",level:"Senior/Varsity"}]},
+      { id:135, disc:"Trap", date:"05/03", flight:3, time:"11:00 AM", loc:"Location 10", num:62, team:"Allen Eagles Competitive Shooting Team 7",
+        athletes:[{name:"Finn Chamberlain",team:"Allen Eagles",level:"Intermediate/Advanced"},{name:"Nathan Henslee",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Landyn Stovall",team:"Allen Eagles",level:"Senior/Jr. Varsity"},{name:"Tanvi Dhanda",team:"Allen Eagles",level:"Intermediate/Entry Level"},{name:"Quincy Gable",team:"C.H.I.R.P",level:"Senior/Varsity"}]},
+    ]
+  }
+
+};
+
+// ── STATE ──
+let currentTournament = 'dfw';
+let squads = [];
 let activeView   = 'timeline';
 let filterDayVal = 'all';
-let filterDiscs  = new Set(['Trap','Sporting','Super','Skeet']);
+let filterDiscs  = new Set();
 let searchVal    = '';
 
-const discNames = {Trap:'Trap', Sporting:'Sporting Clays', Super:'Super Sporting', Skeet:'Skeet'};
+const discNames = {
+  Trap:'Trap', Sporting:'Sporting Clays', Super:'Super Sporting',
+  Skeet:'Skeet', TrapDoubles:'Trap Doubles', SkeetDoubles:'Skeet Doubles'
+};
 const monthNames = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const dayNames   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
@@ -393,6 +396,46 @@ function levelShort(l) {
   if (l.includes('Entry')) return 'Entry';
   if (l.includes('Advanced')) return 'Adv';
   return l.substring(0,5);
+}
+
+function loadTournament(key) {
+  currentTournament = key;
+  const t = tournaments[key];
+  squads = t.squads;
+  document.getElementById('tourneyMeta').textContent = t.meta;
+  filterDayVal = 'all';
+  searchVal = '';
+  document.getElementById('searchInput').value = '';
+
+  // Get unique disciplines for this tournament
+  const discs = [...new Set(squads.map(s => s.disc))];
+  filterDiscs = new Set(discs);
+
+  buildDayPills();
+  buildDiscGrid(discs);
+  render();
+}
+
+function buildDayPills() {
+  const dates = [...new Set(squads.map(s => s.date))].sort();
+  const container = document.getElementById('dayPills');
+  let html = `<button class="pill active" onclick="filterDay(this,'all')">All</button>`;
+  dates.forEach(d => {
+    const [m, day] = d.split('/');
+    html += `<button class="pill" onclick="filterDay(this,'${d}')">${monthNames[parseInt(m)]} ${parseInt(day)}</button>`;
+  });
+  container.innerHTML = html;
+}
+
+function buildDiscGrid(discs) {
+  const pillClass = {
+    Trap:'trap-pill', Sporting:'sport-pill', Super:'super-pill',
+    Skeet:'skeet-pill', TrapDoubles:'doubles-pill', SkeetDoubles:'doubles-pill'
+  };
+  const container = document.getElementById('discGrid');
+  container.innerHTML = discs.map(d =>
+    `<button class="pill ${pillClass[d]||''} active" onclick="filterDisc(this,'${d}')">${discNames[d]||d}</button>`
+  ).join('');
 }
 
 function filteredSquads() {
@@ -418,7 +461,6 @@ function renderTimeline() {
     a.date !== b.date ? a.date.localeCompare(b.date) : timeToMinutes(a.time) - timeToMinutes(b.time)
   );
 
-  // Group by date → time
   const byDate = {};
   sorted.forEach(s => {
     if (!byDate[s.date]) byDate[s.date] = {};
@@ -456,7 +498,7 @@ function renderTimeline() {
         html += `<div class="squad-card discipline-${sq.disc}${isHL?' highlight':''}">
           <div class="squad-header">
             <div>
-              <span class="discipline-tag tag-${sq.disc}">${discNames[sq.disc]}</span>
+              <span class="discipline-tag tag-${sq.disc}">${discNames[sq.disc]||sq.disc}</span>
               <div class="squad-name">${sq.team}</div>
             </div>
             <div class="squad-num">#${sq.num}</div>
@@ -477,10 +519,8 @@ function renderTimeline() {
 
         html += `</ul></div>`;
       });
-
       html += `</div>`;
     });
-
     html += `</div>`;
   });
 
@@ -525,7 +565,7 @@ function renderAthletes() {
     evts.forEach(e => {
       const [m,d] = e.date.split('/');
       html += `<div class="athlete-event-row">
-        <div class="ae-discipline"><span class="discipline-tag tag-${e.disc}">${discNames[e.disc]}</span></div>
+        <div class="ae-discipline"><span class="discipline-tag tag-${e.disc}">${discNames[e.disc]||e.disc}</span></div>
         <div class="ae-info">${monthNames[parseInt(m)]} ${parseInt(d)} · ${e.loc}</div>
         <div class="ae-time">${e.time}</div>
       </div>`;
@@ -553,7 +593,7 @@ function switchView(e, view) {
 
 function filterDay(el, val) {
   filterDayVal = val;
-  document.querySelectorAll('.filter-row:first-child .pill').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#dayPills .pill').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   render();
 }
@@ -573,8 +613,8 @@ function doSearch(val) {
   render();
 }
 
-render();
+// Init
+loadTournament('dfw');
 </script>
-
 </body>
 </html>
